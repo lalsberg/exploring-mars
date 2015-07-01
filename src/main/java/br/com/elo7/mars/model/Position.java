@@ -6,8 +6,14 @@ public final class Position {
 	private final int axisY;
 	
 	public Position(int axisX, int axisY) {
-		this.axisX = axisX;
-		this.axisY = axisY;
+		//TODO pensar: essa validacao deveria ser isolada em uma classe?
+		if(axisX >= 0 && axisY >= 0) {
+			this.axisX = axisX;
+			this.axisY = axisY;
+		} else {
+			throw new IllegalArgumentException("axisX and axisY can "
+					+ "not be less than 0. axisX: " + axisX + axisY + axisY);
+		}
 	}
 
 	public int getAxisX() {
@@ -18,4 +24,9 @@ public final class Position {
 		return axisY;
 	}
 
+	@Override
+	public String toString() {
+		return "Position [axisX=" + axisX + ", axisY=" + axisY + "]";
+	}
+	
 }
