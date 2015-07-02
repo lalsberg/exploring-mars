@@ -1,12 +1,12 @@
 package br.com.elo7.mars.validation;
 
 /**
- * Validate user's input from the Console.
- * All validation errors must provide a useful 
+ * Validate if Strings are in the expected format.
+ * All validation errors must provide an useful 
  * message.
  *
  */
-public class ConsoleValidator {
+public class InputValidator {
 	
 	public Validation validateFieldInput(String fieldInput) {
 		String regex = "\\d\\s\\d";

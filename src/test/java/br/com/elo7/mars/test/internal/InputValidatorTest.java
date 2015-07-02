@@ -5,10 +5,10 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import br.com.elo7.mars.validation.ConsoleValidator;
+import br.com.elo7.mars.validation.InputValidator;
 import br.com.elo7.mars.validation.Validation;
 
-public class ConsoleValidatorTest {
+public class InputValidatorTest {
 	
 	@Test
 	public void testValidateFieldInputInvalid() {
@@ -18,7 +18,7 @@ public class ConsoleValidatorTest {
 		String inputSmaller = "11";
 		String inputLarger = "1 1 ";
 		
-		ConsoleValidator validator = new ConsoleValidator();
+		InputValidator validator = new InputValidator();
 		Validation validation = validator.validateFieldInput(inputWithLetter);
 		Validation validation2 = validator.validateFieldInput(inputWithSymbol);
 		Validation validation4 = validator.validateFieldInput(inputWithoutSpace);
@@ -37,7 +37,7 @@ public class ConsoleValidatorTest {
 		String input = "1 5";
 		String input2 = "0 0";
 		
-		ConsoleValidator validator = new ConsoleValidator();
+		InputValidator validator = new InputValidator();
 		Validation validation = validator.validateFieldInput(input);
 		Validation validation2 = validator.validateFieldInput(input2);
 		
@@ -52,7 +52,7 @@ public class ConsoleValidatorTest {
 		String input3 = "0 0 W";
 		String input4 = "5 5 S";
 		
-		ConsoleValidator validator = new ConsoleValidator();
+		InputValidator validator = new InputValidator();
 		Validation validation = validator.validateRoverInput(input);
 		Validation validation2 = validator.validateRoverInput(input2);
 		Validation validation3 = validator.validateRoverInput(input3);
@@ -76,7 +76,7 @@ public class ConsoleValidatorTest {
 		String inputSmaller = "1 1 ";
 		String inputLarger = "1 1 1 ";
 		
-		ConsoleValidator validator = new ConsoleValidator();
+		InputValidator validator = new InputValidator();
 		Validation validation = validator.validateRoverInput(inputWithLetterOnAxisX);
 		Validation validation2 = validator.validateRoverInput(inputWithLetterOnAxisY);
 		Validation validation3 = validator.validateRoverInput(inputWithSymbolOnAxisX);
