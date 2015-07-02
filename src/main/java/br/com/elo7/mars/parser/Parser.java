@@ -1,5 +1,9 @@
 package br.com.elo7.mars.parser;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.elo7.mars.enumeration.Command;
 import br.com.elo7.mars.enumeration.Direction;
 import br.com.elo7.mars.exception.ParseException;
 import br.com.elo7.mars.model.Field;
@@ -45,6 +49,23 @@ public class Parser {
 			Position position = new Position(axisX, axisY);
 			Rover rover = new Rover(field, position, direction);
 			return rover;
+		} else {
+			throw new ParseException(validation.getMessage());
+		}
+	}
+
+	public List<Command> parseCommandList(String inputCommand) 
+			throws ParseException {
+		Validation validation = validator.validateCommandInput(inputCommand);
+		
+		if(validation.isOk()) {
+			List<Command> commandList = new ArrayList<Command>();
+			char[] commandArray = inputCommand.toCharArray();
+			for (char commandChar : commandArray) {
+				Command command = Command.valueOf(commandChar);
+				commandList.add(command);
+			}
+			return commandList;
 		} else {
 			throw new ParseException(validation.getMessage());
 		}

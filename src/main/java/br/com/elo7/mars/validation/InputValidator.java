@@ -27,4 +27,13 @@ public class InputValidator {
 		return validation;
 	}
 
+	public Validation validateCommandInput(String commandInput) {
+		String regex = "[MRL]*";
+		boolean matches = commandInput.matches(regex);
+		String message = matches ? "" : "Error: unexpected command list input pattern. "
+				+ "Example of valid input (remove quotes): \"MLRRLMMR\".";
+		Validation validation = new Validation(matches, message);
+		return validation;
+	}
+
 }

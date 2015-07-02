@@ -10,27 +10,28 @@ public enum Direction {
 	EAST('E'),
 	WEST('W');
 	
-	private char command;
-	private static Map<Character, Direction> byCommand = new HashMap<Character, Direction>();
+	private char inputCommand;
+	private static Map<Character, Direction> byInputCommand = 
+			new HashMap<Character, Direction>();
 	
 	//Eagerly initializing a helper map to avoid iterating through 
 	//Direction values many times.
 	static {
         for (Direction direction : Direction.values()) {
-        	byCommand.put(direction.command, direction);
+        	byInputCommand.put(direction.inputCommand, direction);
         }
 	}
 
-	private Direction(char value) {
-		this.command = value;
+	private Direction(char inputCommand) {
+		this.inputCommand = inputCommand;
 	}
 
-	public char getValue() {
-		return command;
+	public char getInputCommand() {
+		return inputCommand;
 	}
 	
-	public static Direction valueOf(Character command) {
-        return byCommand.get(command);
+	public static Direction valueOf(Character inputCommand) {
+        return byInputCommand.get(inputCommand);
     }
 	
 }

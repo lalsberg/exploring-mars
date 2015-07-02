@@ -11,6 +11,19 @@ import br.com.elo7.mars.validation.Validation;
 public class InputValidatorTest {
 	
 	@Test
+	public void testValidateFieldInputValid() {
+		String input = "1 5";
+		String input2 = "0 0";
+		
+		InputValidator validator = new InputValidator();
+		Validation validation = validator.validateFieldInput(input);
+		Validation validation2 = validator.validateFieldInput(input2);
+		
+		assertTrue(validation.isOk());
+		assertTrue(validation2.isOk());
+	}
+	
+	@Test
 	public void testValidateFieldInputInvalid() {
 		String inputWithLetter = "a 5";
 		String inputWithSymbol = "^ 1";
@@ -30,19 +43,6 @@ public class InputValidatorTest {
 		assertFalse(validation3.isOk());
 		assertFalse(validation4.isOk());
 		assertFalse(validation5.isOk());
-	}
-	
-	@Test
-	public void testValidateFieldInputValid() {
-		String input = "1 5";
-		String input2 = "0 0";
-		
-		InputValidator validator = new InputValidator();
-		Validation validation = validator.validateFieldInput(input);
-		Validation validation2 = validator.validateFieldInput(input2);
-		
-		assertTrue(validation.isOk());
-		assertTrue(validation2.isOk());
 	}
 	
 	@Test
@@ -98,4 +98,42 @@ public class InputValidatorTest {
 		assertFalse(validation9.isOk());
 	}
 	
+	@Test
+	public void testValidateCommandInputValid() {
+		String inputNoCommand = "";
+		String inputOneCommand = "L";
+		String inputAllCommandsOnce = "LMR";
+		String inputAllCommandsTwice = "LLRMMR";
+		
+		InputValidator validator = new InputValidator();
+		Validation validation = validator.validateCommandInput(inputNoCommand);
+		Validation validation2 = validator.validateCommandInput(inputOneCommand);
+		Validation validation3 = validator.validateCommandInput(inputAllCommandsOnce);
+		Validation validation4 = validator.validateCommandInput(inputAllCommandsTwice);
+		
+		assertTrue(validation.isOk());
+		assertTrue(validation2.isOk());
+		assertTrue(validation3.isOk());
+		assertTrue(validation4.isOk());
+	}
+	
+	@Test
+	public void testValidateCommandInputInvalid() {
+		String inputWithInvalidLetter = "A";
+		String inputWithSymbol = "&";
+		String inputWithSpaces = "L R";
+		
+		InputValidator validator = new InputValidator();
+		Validation validation = validator.validateCommandInput(inputWithInvalidLetter);
+		Validation validation2 = validator.validateCommandInput(inputWithSymbol);
+		Validation validation3 = validator.validateCommandInput(inputWithSpaces);
+		
+		assertFalse(validation.isOk());
+		assertFalse(validation2.isOk());
+		assertFalse(validation3.isOk());
+	}
+	
+	//TODO testValidateFieldInputInvalidShouldReturnErrorMessage
+	//TODO testValidateRoverInputInvalidShouldReturnErrorMessage
+	//TODO testValidateCommandInputInvalidShouldReturnErrorMessage
 }
