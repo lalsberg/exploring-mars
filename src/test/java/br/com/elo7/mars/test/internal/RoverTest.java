@@ -1,4 +1,4 @@
-package br.com.elo7.mars.test.rover;
+package br.com.elo7.mars.test.internal;
 
 import static org.junit.Assert.assertEquals;
 

@@ -19,6 +19,7 @@ public class Rover {
 		}
 	}
 
+	//TODO clientes nao deveriam conhecer move(), apenas proccessCommand(command);
 	public void move() {
 		switch(direction) {
 			case NORTH:
