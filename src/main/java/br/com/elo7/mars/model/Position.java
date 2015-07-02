@@ -6,7 +6,6 @@ public final class Position {
 	private final int axisY;
 	
 	public Position(int axisX, int axisY) {
-		//TODO pensar: essa validacao deveria ser isolada em uma classe?
 		if(axisX >= 0 && axisY >= 0) {
 			this.axisX = axisX;
 			this.axisY = axisY;

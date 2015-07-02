@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import br.com.elo7.mars.enumeration.Command;
 import br.com.elo7.mars.enumeration.Direction;
 import br.com.elo7.mars.model.Field;
 import br.com.elo7.mars.model.Position;
@@ -12,7 +13,7 @@ import br.com.elo7.mars.model.Rover;
 public class RoverTest {
 	
 	@Test
-	public void testMoveNorth() {
+	public void testCommandMoveNorth() {
 		int fieldLimitX = 5;
 		int fieldLimitY = 5;
 		//TODO mock fieldArea
@@ -26,14 +27,14 @@ public class RoverTest {
 		Direction direction = Direction.NORTH;
 		Rover rover = new Rover(field, roverPosition, direction);
 		
-		rover.move();
+		rover.doCommand(Command.MOVE);
 		
 		assertEquals(roverAxisX, rover.getPosition().getAxisX());
 		assertEquals(roverAxisY + 1, rover.getPosition().getAxisY());
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testInvalidPosition() {
+	public void testCreateRoverOutOfField() {
 		int fieldLimitX = 5;
 		int fieldLimitY = 5;
 		//TODO mock fieldArea
@@ -47,6 +48,9 @@ public class RoverTest {
 		new Rover(field, roverPosition, direction);
 	}
 	
+	//TODO testCommandMoveEast
+	//TODO testCommandMoveWest
+	//TODO testCommandMoveSouth
 	//TODO testMoveAgainstWall
 	//TODO testMoveAgainstRover
 

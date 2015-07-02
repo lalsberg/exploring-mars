@@ -12,7 +12,6 @@ public class Field {
 		boolean axisXFits = this.area.getAxisX() >= position.getAxisX();
 		boolean axisYFits = this.area.getAxisY() >= position.getAxisY();
 		return axisXFits && axisYFits;
-		
 	}
 	
 	public Position getArea() {

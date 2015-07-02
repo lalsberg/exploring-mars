@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import br.com.elo7.mars.console.Console;
 import br.com.elo7.mars.model.Field;
+import br.com.elo7.mars.model.Rover;
 import br.com.elo7.mars.validation.ConsoleValidator;
 
 public class Run {
@@ -13,7 +14,7 @@ public class Run {
 		ConsoleValidator consoleValidator = new ConsoleValidator();
 		Console console = new Console(scanner, consoleValidator);
 		Field field = console.obtainField();
-		console.obtainRover();
+		Rover rover = console.obtainRoverOrStop(field);
 	}
 
 }
