@@ -12,10 +12,7 @@ public class Rover {
 	//TODO redesign to observer pattern?
 	public static Rover land(Field field, Position position, 
 			Direction direction){
-		//first call the private constructor
 		Rover rover = new Rover(field, position, direction);
-		//the object is now fully constructed, and can now be
-		//passed safely to the outside world
 		field.addRover(rover);
 		return rover;
 	}
@@ -37,27 +34,52 @@ public class Rover {
 			case MOVE: 
 				move();
 				break;
+		case TURN_LEFT:
+			direction = direction.left();
+			break;
+		case TURN_RIGHT:
+			direction = direction.right();
+			break;
 		}
 	}
 
-	//TODO EAST, SOUTH, WEST by test
 	private void move() {
+		try {
+			Position nextPosition = predictNextPosition();
+			if(field.checkAvailable(nextPosition)) {
+				this.position = nextPosition;
+			}
+			
+		//An IllegalArgumentException here means that the rover 
+		//tried to move outside the field. We do nothing.
+		} catch(IllegalArgumentException e) { }
+	}
+
+	private Position predictNextPosition() throws IllegalArgumentException {
+		Position nextPosition;
+		
 		switch(direction) {
 			case NORTH:
-				Position nextPosition = new Position(position.getAxisX(), 
-						position.getAxisY() + 1);
-				if(field.checkAvailable(nextPosition)) {
-					this.position = nextPosition;
-				}
+				nextPosition = new Position(position.getAxisX(), 
+					position.getAxisY() + 1);
 				break;
-		case EAST:
-			break;
-		case SOUTH:
-			break;
-		case WEST:
-			break;
+			case EAST:
+				nextPosition = new Position(position.getAxisX() + 1, 
+						position.getAxisY());
+				break;
+			case SOUTH:
+				nextPosition = new Position(position.getAxisX(), 
+						position.getAxisY() - 1);
+				break;
+			case WEST:
+				nextPosition = new Position(position.getAxisX() - 1, 
+						position.getAxisY());
+				break;
+			default:
+				nextPosition = null;
+				break;
 		}
-		
+		return nextPosition;
 	}
 
 	public Position getPosition() {

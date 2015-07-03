@@ -34,6 +34,7 @@ public class Run {
 					}
 				}
 			} while(!userStopped);
+			System.out.println(field);
 			//TODO: for(Rover rover : field.getRovers()) { String roverOutput = Parser.parseString(rover); System.out.println(roverOutput);}
 			
 		} catch(ParseException e) {

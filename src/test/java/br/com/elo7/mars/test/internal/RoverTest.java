@@ -64,7 +64,7 @@ public class RoverTest {
 	}
 	
 	@Test 
-	public void testMoveAgainstRover() {
+	public void testCommandMoveAgainstRover() {
 		Position fieldArea = new Position(5, 5);
 		Field field = new Field(fieldArea);
 		
@@ -81,6 +81,110 @@ public class RoverTest {
 		
 		assertEquals(roverAxisX, rover.getPosition().getAxisX());
 		assertEquals(roverAxisY, rover.getPosition().getAxisY());
+	}
+	
+	@Test 
+	public void testCommandTurnLeftLookingNorth() {
+		Position fieldArea = new Position(5, 5);
+		Field field = new Field(fieldArea);
+		
+		Position position = new Position(3, 3);
+		Rover rover = Rover.land(field, position, Direction.NORTH);
+		
+		rover.doCommand(Command.TURN_LEFT);
+		
+		assertEquals(Direction.WEST, rover.getDirection());
+	}
+	
+	@Test 
+	public void testCommandTurnRightLookingNorth() {
+		Position fieldArea = new Position(5, 5);
+		Field field = new Field(fieldArea);
+		
+		Position position = new Position(3, 3);
+		Rover rover = Rover.land(field, position, Direction.NORTH);
+		
+		rover.doCommand(Command.TURN_RIGHT);
+		
+		assertEquals(Direction.EAST, rover.getDirection());
+	}
+	
+	@Test
+	public void testCommandTurnLeftLookingWest() {
+		Position fieldArea = new Position(5, 5);
+		Field field = new Field(fieldArea);
+		
+		Position position = new Position(3, 3);
+		Rover rover = Rover.land(field, position, Direction.WEST);
+		
+		rover.doCommand(Command.TURN_LEFT);
+		
+		assertEquals(Direction.SOUTH, rover.getDirection());
+	}
+	
+	@Test
+	public void testCommandTurnRightLookingWest() {
+		Position fieldArea = new Position(5, 5);
+		Field field = new Field(fieldArea);
+		
+		Position position = new Position(3, 3);
+		Rover rover = Rover.land(field, position, Direction.WEST);
+		
+		rover.doCommand(Command.TURN_RIGHT);
+		
+		assertEquals(Direction.NORTH, rover.getDirection());
+	}
+	
+	@Test
+	public void testCommandTurnLeftLookingEast() {
+		Position fieldArea = new Position(5, 5);
+		Field field = new Field(fieldArea);
+		
+		Position position = new Position(3, 3);
+		Rover rover = Rover.land(field, position, Direction.EAST);
+		
+		rover.doCommand(Command.TURN_LEFT);
+		
+		assertEquals(Direction.NORTH, rover.getDirection());
+	}
+	
+	@Test
+	public void testCommandTurnRightLookingEast() {
+		Position fieldArea = new Position(5, 5);
+		Field field = new Field(fieldArea);
+		
+		Position position = new Position(3, 3);
+		Rover rover = Rover.land(field, position, Direction.EAST);
+		
+		rover.doCommand(Command.TURN_RIGHT);
+		
+		assertEquals(Direction.SOUTH, rover.getDirection());
+	}
+	
+	@Test
+	public void testCommandTurnLeftLookingSouth() {
+		Position fieldArea = new Position(5, 5);
+		Field field = new Field(fieldArea);
+		
+		Position position = new Position(3, 3);
+		Rover rover = Rover.land(field, position, Direction.SOUTH);
+		
+		rover.doCommand(Command.TURN_LEFT);
+		
+		assertEquals(Direction.EAST, rover.getDirection());
+	}
+	
+	@Test
+	public void testCommandTurnRightLookingSouth() {
+		Position fieldArea = new Position(5, 5);
+		Field field = new Field(fieldArea);
+		
+		Position position = new Position(3, 3);
+		Rover rover = Rover.land(field, position, Direction.SOUTH);
+		
+		rover.doCommand(Command.TURN_RIGHT);
+		
+		assertEquals(Direction.WEST, rover.getDirection());
 	}
 	
 	//TODO testCommandMoveEast
