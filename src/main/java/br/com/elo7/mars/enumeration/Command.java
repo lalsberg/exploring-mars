@@ -12,8 +12,6 @@ public enum Command {
 	private static Map<Character, Command> byInputCommand = 
 			new HashMap<Character, Command>();
 	
-	//Eagerly initializing a helper map to avoid iterating through 
-	//Command values many times.
 	static {
         for (Command Command : Command.values()) {
         	byInputCommand.put(Command.inputCommand, Command);

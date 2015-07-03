@@ -133,7 +133,4 @@ public class InputValidatorTest {
 		assertFalse(validation3.isOk());
 	}
 	
-	//TODO testValidateFieldInputInvalidShouldReturnErrorMessage
-	//TODO testValidateRoverInputInvalidShouldReturnErrorMessage
-	//TODO testValidateCommandInputInvalidShouldReturnErrorMessage
 }
