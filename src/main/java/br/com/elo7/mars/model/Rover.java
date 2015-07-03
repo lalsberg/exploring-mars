@@ -7,9 +7,22 @@ public class Rover {
 	
 	private Position position;
 	private Direction direction;
+	private Field field;
+	
+	//TODO redesign to observer pattern?
+	public static Rover land(Field field, Position position, 
+			Direction direction){
+		//first call the private constructor
+		Rover rover = new Rover(field, position, direction);
+		//the object is now fully constructed, and can now be
+		//passed safely to the outside world
+		field.addRover(rover);
+		return rover;
+	}
 
-	public Rover(Field field, Position position, Direction direction) {
-		if(field.supports(position)) {
+	private Rover(Field field, Position position, Direction direction) {
+		if(field.checkAvailable(position)) {
+			this.field = field;
 			this.position = position;
 			this.direction = direction;
 		} else {
@@ -31,8 +44,11 @@ public class Rover {
 	private void move() {
 		switch(direction) {
 			case NORTH:
-				this.position = new Position(position.getAxisX(), 
+				Position nextPosition = new Position(position.getAxisX(), 
 						position.getAxisY() + 1);
+				if(field.checkAvailable(nextPosition)) {
+					this.position = nextPosition;
+				}
 				break;
 		case EAST:
 			break;

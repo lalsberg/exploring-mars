@@ -47,7 +47,7 @@ public class Parser {
 			
 			Direction direction = Direction.valueOf(directionChar);
 			Position position = new Position(axisX, axisY);
-			Rover rover = new Rover(field, position, direction);
+			Rover rover = Rover.land(field, position, direction);
 			return rover;
 		} else {
 			throw new ParseException(validation.getMessage());
