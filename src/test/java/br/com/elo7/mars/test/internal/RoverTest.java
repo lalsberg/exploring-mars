@@ -12,6 +12,29 @@ import br.com.elo7.mars.model.Rover;
 
 public class RoverTest {
 	
+	@Test(expected = IllegalArgumentException.class)
+	public void testCreateRoverOutOfFieldMustThrowException() {
+		//TODO mock fieldArea
+		Position fieldArea = new Position(5, 5);
+		Field field = new Field(fieldArea);
+		
+		int roverAxisX = 6;
+		int roverAxisY = 2;
+		Position roverPosition = new Position(roverAxisX, roverAxisY);
+		Direction direction = Direction.NORTH;
+		Rover.land(field, roverPosition, direction);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testLandRoverOverAnotherRoverMustThrowException() {
+		Position fieldArea = new Position(5, 5);
+		Field field = new Field(fieldArea);
+		
+		Position position = new Position(3, 3);
+		Rover.land(field, position, Direction.NORTH);
+		Rover.land(field, position, Direction.NORTH);
+	}
+	
 	@Test
 	public void testCommandMoveNorth() {
 		//TODO mock fieldArea
@@ -31,17 +54,61 @@ public class RoverTest {
 		assertEquals(roverAxisY + 1, rover.getPosition().getAxisY());
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
-	public void testCreateRoverOutOfField() {
+	@Test
+	public void testCommandMoveEast() {
 		//TODO mock fieldArea
 		Position fieldArea = new Position(5, 5);
 		Field field = new Field(fieldArea);
 		
-		int roverAxisX = 6;
+		int roverAxisX = 1;
 		int roverAxisY = 2;
+		//TODO mock roverPosition
 		Position roverPosition = new Position(roverAxisX, roverAxisY);
-		Direction direction = Direction.NORTH;
-		Rover.land(field, roverPosition, direction);
+		Direction direction = Direction.EAST;
+		Rover rover = Rover.land(field, roverPosition, direction);
+		
+		rover.doCommand(Command.MOVE);
+		
+		assertEquals(roverAxisX + 1, rover.getPosition().getAxisX());
+		assertEquals(roverAxisY, rover.getPosition().getAxisY());
+	}
+	
+	@Test
+	public void testCommandMoveWest() {
+		//TODO mock fieldArea
+		Position fieldArea = new Position(5, 5);
+		Field field = new Field(fieldArea);
+		
+		int roverAxisX = 1;
+		int roverAxisY = 2;
+		//TODO mock roverPosition
+		Position roverPosition = new Position(roverAxisX, roverAxisY);
+		Direction direction = Direction.WEST;
+		Rover rover = Rover.land(field, roverPosition, direction);
+		
+		rover.doCommand(Command.MOVE);
+		
+		assertEquals(roverAxisX - 1, rover.getPosition().getAxisX());
+		assertEquals(roverAxisY, rover.getPosition().getAxisY());
+	}
+	
+	@Test
+	public void testCommandMoveSouth() {
+		//TODO mock fieldArea
+		Position fieldArea = new Position(5, 5);
+		Field field = new Field(fieldArea);
+		
+		int roverAxisX = 1;
+		int roverAxisY = 2;
+		//TODO mock roverPosition
+		Position roverPosition = new Position(roverAxisX, roverAxisY);
+		Direction direction = Direction.SOUTH;
+		Rover rover = Rover.land(field, roverPosition, direction);
+		
+		rover.doCommand(Command.MOVE);
+		
+		assertEquals(roverAxisX, rover.getPosition().getAxisX());
+		assertEquals(roverAxisY - 1, rover.getPosition().getAxisY());
 	}
 	
 	@Test
@@ -186,9 +253,5 @@ public class RoverTest {
 		
 		assertEquals(Direction.WEST, rover.getDirection());
 	}
-	
-	//TODO testCommandMoveEast
-	//TODO testCommandMoveWest
-	//TODO testCommandMoveSouth
 
 }
