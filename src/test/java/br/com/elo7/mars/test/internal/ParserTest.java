@@ -2,6 +2,7 @@ package br.com.elo7.mars.test.internal;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.mockito.Mockito.*;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import br.com.elo7.mars.exception.ParseException;
 import br.com.elo7.mars.model.spec.Bidimensional;
 import br.com.elo7.mars.parser.Parser;
 import br.com.elo7.mars.validation.InputValidator;
+import br.com.elo7.mars.validation.Validation;
 import br.com.elo7.mars.vo.RoverVO;
 
 public class ParserTest {
@@ -21,8 +23,11 @@ public class ParserTest {
 	public void testParsePosition() throws ParseException {
 		String fieldInput = "5 3";
 		
-		//TODO mock validator
-		InputValidator validator = new InputValidator();
+		Validation validation = mock(Validation.class);
+		when(validation.isOk()).thenReturn(true);
+		InputValidator validator = mock(InputValidator.class);
+		when(validator.validatePositionInput(anyString())).thenReturn(validation);
+		
 		Parser parser = new Parser(validator);
 		Bidimensional position = parser.parsePosition(fieldInput);
 		
@@ -32,11 +37,15 @@ public class ParserTest {
 	}
 	
 	@Test(expected = ParseException.class)
-	public void testParseFieldWithInvalidInputShouldThrowExceptionOnValidationFail() 
+	public void testParsePositionWithInvalidInputShouldThrowExceptionOnValidationFail() 
 			throws ParseException {
 		String fieldInput = "a 3";
-		//TODO mock validator.. on validate return false
-		InputValidator validator = new InputValidator();
+		
+		Validation validation = mock(Validation.class);
+		when(validation.isOk()).thenReturn(false);
+		InputValidator validator = mock(InputValidator.class);
+		when(validator.validatePositionInput(anyString())).thenReturn(validation);
+		
 		Parser parser = new Parser(validator);
 		parser.parsePosition(fieldInput);
 	}
@@ -44,11 +53,13 @@ public class ParserTest {
 	@Test
 	public void testParseRover() throws ParseException {
 		String inputRover = "1 2 N";
-				
-		//TODO mock validator
-		InputValidator validator = new InputValidator();
-		Parser parser = new Parser(validator);
 		
+		Validation validation = mock(Validation.class);
+		when(validation.isOk()).thenReturn(true);
+		InputValidator validator = mock(InputValidator.class);
+		when(validator.validateRoverInput(anyString())).thenReturn(validation);
+		
+		Parser parser = new Parser(validator);
 		RoverVO rover = parser.parseRover(inputRover);
 		
 		assertNotNull(rover);
@@ -62,10 +73,12 @@ public class ParserTest {
 			throws ParseException {
 		String inputRover = "1 a N";
 				
-		//TODO mock validator
-		InputValidator validator = new InputValidator();
-		Parser parser = new Parser(validator);
+		Validation validation = mock(Validation.class);
+		when(validation.isOk()).thenReturn(false);
+		InputValidator validator = mock(InputValidator.class);
+		when(validator.validateRoverInput(anyString())).thenReturn(validation);
 		
+		Parser parser = new Parser(validator);
 		parser.parseRover(inputRover);
 	}
 	
@@ -73,10 +86,12 @@ public class ParserTest {
 	public void testParseCommandList() throws ParseException {
 		String inputCommand = "LRM";
 		
-		//TODO mock validator
-		InputValidator validator = new InputValidator();
-		Parser parser = new Parser(validator);
+		Validation validation = mock(Validation.class);
+		when(validation.isOk()).thenReturn(true);
+		InputValidator validator = mock(InputValidator.class);
+		when(validator.validateCommandInput(anyString())).thenReturn(validation);
 		
+		Parser parser = new Parser(validator);
 		List<Command> commandList = parser.parseCommandList(inputCommand);
 		
 		assertNotNull(commandList);
@@ -91,8 +106,10 @@ public class ParserTest {
 			throws ParseException {
 		String inputCommand = "L RM";
 		
-		//TODO mock validator
-		InputValidator validator = new InputValidator();
+		Validation validation = mock(Validation.class);
+		when(validation.isOk()).thenReturn(false);
+		InputValidator validator = mock(InputValidator.class);
+		when(validator.validateCommandInput(anyString())).thenReturn(validation);
 		Parser parser = new Parser(validator);
 		
 		parser.parseCommandList(inputCommand);

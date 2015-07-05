@@ -76,9 +76,8 @@ public class RoverTest {
 	
 	@Test
 	public void testCommandMoveWest() {
-		//TODO mock fieldArea
-		Bidimensional fieldArea = new Position(5, 5);
-		Field field = new Field(fieldArea);
+		Field field = mock(Field.class);
+		when(field.checkAvailable(any(Position.class))).thenReturn(true);
 		
 		int roverAxisX = 1;
 		int roverAxisY = 2;
