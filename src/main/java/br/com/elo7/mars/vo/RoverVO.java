@@ -1,19 +1,19 @@
 package br.com.elo7.mars.vo;
 
 import br.com.elo7.mars.enumeration.Direction;
-import br.com.elo7.mars.model.Position;
+import br.com.elo7.mars.model.spec.Bidimensional;
 
 public class RoverVO {
 
-	private final Position position;
+	private final Bidimensional position;
 	private final Direction direction;
 
-	public RoverVO(Position position, Direction direction) {
+	public RoverVO(Bidimensional position, Direction direction) {
 		this.position = position;
 		this.direction = direction;
 	}
 
-	public Position getPosition() {
+	public Bidimensional getPosition() {
 		return position;
 	}
 

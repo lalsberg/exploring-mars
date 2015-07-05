@@ -1,6 +1,8 @@
 package br.com.elo7.mars.model;
 
-public final class Position {
+import br.com.elo7.mars.model.spec.Bidimensional;
+
+public final class Position implements Bidimensional {
 	
 	private final int axisX;
 	private final int axisY;

@@ -10,7 +10,7 @@ import org.junit.Test;
 import br.com.elo7.mars.enumeration.Command;
 import br.com.elo7.mars.enumeration.Direction;
 import br.com.elo7.mars.exception.ParseException;
-import br.com.elo7.mars.model.Position;
+import br.com.elo7.mars.model.spec.Bidimensional;
 import br.com.elo7.mars.parser.Parser;
 import br.com.elo7.mars.validation.InputValidator;
 import br.com.elo7.mars.vo.RoverVO;
@@ -24,7 +24,7 @@ public class ParserTest {
 		//TODO mock validator
 		InputValidator validator = new InputValidator();
 		Parser parser = new Parser(validator);
-		Position position = parser.parsePosition(fieldInput);
+		Bidimensional position = parser.parsePosition(fieldInput);
 		
 		assertNotNull(position);
 		assertEquals(5, position.getAxisX());

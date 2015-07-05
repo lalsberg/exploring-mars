@@ -2,22 +2,23 @@ package br.com.elo7.mars.model;
 
 import br.com.elo7.mars.enumeration.Command;
 import br.com.elo7.mars.enumeration.Direction;
+import br.com.elo7.mars.model.spec.Bidimensional;
 
 public class Rover {
 	
-	private Position position;
+	private Bidimensional position;
 	private Direction direction;
 	private Field field;
 	
 	//TODO redesign to observer pattern?
-	public static Rover land(Field field, Position position, 
+	public static Rover land(Field field, Bidimensional position, 
 			Direction direction){
 		Rover rover = new Rover(field, position, direction);
 		field.addRover(rover);
 		return rover;
 	}
 
-	private Rover(Field field, Position position, Direction direction) {
+	private Rover(Field field, Bidimensional position, Direction direction) {
 		if(field.checkAvailable(position)) {
 			this.field = field;
 			this.position = position;
@@ -45,7 +46,7 @@ public class Rover {
 
 	private void move() {
 		try {
-			Position nextPosition = predictNextPosition();
+			Bidimensional nextPosition = predictNextPosition();
 			if(field.checkAvailable(nextPosition)) {
 				this.position = nextPosition;
 			}
@@ -55,8 +56,8 @@ public class Rover {
 		} catch(IllegalArgumentException e) { }
 	}
 
-	private Position predictNextPosition() throws IllegalArgumentException {
-		Position nextPosition;
+	private Bidimensional predictNextPosition() throws IllegalArgumentException {
+		Bidimensional nextPosition;
 		
 		switch(direction) {
 			case NORTH:
@@ -82,7 +83,7 @@ public class Rover {
 		return nextPosition;
 	}
 
-	public Position getPosition() {
+	public Bidimensional getPosition() {
 		return position;
 	}
 

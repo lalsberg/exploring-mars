@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import br.com.elo7.mars.model.spec.Bidimensional;
+
 //TODO Field should have a single instance in app scope
 public class Field {
 
-	private final Position area;
+	private final Bidimensional area;
 	private List<Rover> rovers = new ArrayList<Rover>();
 
-	public Field(Position area) {
+	public Field(Bidimensional area) {
 		this.area = area;
 	}
 	
@@ -18,17 +20,17 @@ public class Field {
 		rovers.add(rover);
 	}
 	
-	public boolean checkAvailable(Position position) {
+	public boolean checkAvailable(Bidimensional position) {
 		return isInsideArea(position) && !containsRover(position);
 	}
 	
-	private boolean isInsideArea(Position position) {
+	private boolean isInsideArea(Bidimensional position) {
 		boolean axisXFits = area.getAxisX() >= position.getAxisX();
 		boolean axisYFits = area.getAxisY() >= position.getAxisY();
 		return axisXFits && axisYFits;
 	}
 	
-	private boolean containsRover(Position position) {
+	private boolean containsRover(Bidimensional position) {
 		boolean contains = false;
 		
 		for(Rover rover : rovers) {
@@ -39,7 +41,7 @@ public class Field {
 		return contains;
 	}
 	
-	public Position getArea() {
+	public Bidimensional getArea() {
 		return area;
 	}
 

@@ -9,8 +9,8 @@ import java.util.Scanner;
 import br.com.elo7.mars.enumeration.Command;
 import br.com.elo7.mars.exception.ParseException;
 import br.com.elo7.mars.model.Field;
-import br.com.elo7.mars.model.Position;
 import br.com.elo7.mars.model.Rover;
+import br.com.elo7.mars.model.spec.Bidimensional;
 import br.com.elo7.mars.parser.Parser;
 import br.com.elo7.mars.task.ObtainRoversWithCommandsTask;
 import br.com.elo7.mars.vo.RoverVO;
@@ -75,7 +75,7 @@ public class ControlPanel {
 	private Field initField() throws ParseException {
 		String fieldAreaLimitsInput = scanner.nextLine();
 		
-		Position fieldArea = parser.parsePosition(fieldAreaLimitsInput);
+		Bidimensional fieldArea = parser.parsePosition(fieldAreaLimitsInput);
 		Field field = new Field(fieldArea);
 		return field;
 	}
