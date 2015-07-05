@@ -12,7 +12,7 @@ import br.com.elo7.mars.parser.Parser;
 import br.com.elo7.mars.validation.InputValidator;
 import br.com.elo7.mars.vo.RoverVO;
 
-public class Run {
+public class Application {
 	
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
