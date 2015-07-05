@@ -62,10 +62,11 @@ public class RoverTest {
 		
 		int roverAxisX = 1;
 		int roverAxisY = 2;
-		//TODO mock roverPosition
-		Bidimensional roverPosition = new Position(roverAxisX, roverAxisY);
+		Bidimensional position = mock(Bidimensional.class);
+		when(position.getAxisX()).thenReturn(roverAxisX);
+		when(position.getAxisY()).thenReturn(roverAxisY);
 		Direction direction = Direction.EAST;
-		Rover rover = Rover.land(field, roverPosition, direction);
+		Rover rover = Rover.land(field, position, direction);
 		
 		rover.doCommand(Command.MOVE);
 		
@@ -81,10 +82,11 @@ public class RoverTest {
 		
 		int roverAxisX = 1;
 		int roverAxisY = 2;
-		//TODO mock roverPosition
-		Bidimensional roverPosition = new Position(roverAxisX, roverAxisY);
+		Bidimensional position = mock(Bidimensional.class);
+		when(position.getAxisX()).thenReturn(roverAxisX);
+		when(position.getAxisY()).thenReturn(roverAxisY);
 		Direction direction = Direction.WEST;
-		Rover rover = Rover.land(field, roverPosition, direction);
+		Rover rover = Rover.land(field, position, direction);
 		
 		rover.doCommand(Command.MOVE);
 		
@@ -94,16 +96,16 @@ public class RoverTest {
 	
 	@Test
 	public void testCommandMoveSouth() {
-		//TODO mock fieldArea
-		Bidimensional fieldArea = new Position(5, 5);
-		Field field = new Field(fieldArea);
+		Field field = mock(Field.class);
+		when(field.checkAvailable(any(Position.class))).thenReturn(true);
 		
 		int roverAxisX = 1;
 		int roverAxisY = 2;
-		//TODO mock roverPosition
-		Bidimensional roverPosition = new Position(roverAxisX, roverAxisY);
+		Bidimensional position = mock(Bidimensional.class);
+		when(position.getAxisX()).thenReturn(roverAxisX);
+		when(position.getAxisY()).thenReturn(roverAxisY);
 		Direction direction = Direction.SOUTH;
-		Rover rover = Rover.land(field, roverPosition, direction);
+		Rover rover = Rover.land(field, position, direction);
 		
 		rover.doCommand(Command.MOVE);
 		
@@ -113,16 +115,17 @@ public class RoverTest {
 	
 	@Test
 	public void testCommandMoveAgainstWall() {
-		//TODO mock fieldArea
 		Bidimensional fieldArea = new Position(5, 5);
 		Field field = new Field(fieldArea);
 		
 		int roverAxisX = 5;
 		int roverAxisY = 5;
-		//TODO mock roverPosition
-		Bidimensional roverPosition = new Position(roverAxisX, roverAxisY);
+		Bidimensional position = mock(Bidimensional.class);
+		when(position.getAxisX()).thenReturn(roverAxisX);
+		when(position.getAxisY()).thenReturn(roverAxisY);
+		
 		Direction direction = Direction.NORTH;
-		Rover rover = Rover.land(field, roverPosition, direction);
+		Rover rover = Rover.land(field, position, direction);
 		
 		rover.doCommand(Command.MOVE);
 		
@@ -135,13 +138,18 @@ public class RoverTest {
 		Bidimensional fieldArea = new Position(5, 5);
 		Field field = new Field(fieldArea);
 		
-		Bidimensional anotherRoverPosition = new Position(3, 3);
+		int anotherRoverAxisX = 3;
+		int anotherRoverAxisY = 3;
+		Bidimensional anotherRoverPosition = mock(Bidimensional.class);
+		when(anotherRoverPosition.getAxisX()).thenReturn(anotherRoverAxisX);
+		when(anotherRoverPosition.getAxisY()).thenReturn(anotherRoverAxisY);
 		Rover.land(field, anotherRoverPosition, Direction.NORTH);
 		
-		//TODO mock roverPosition
 		int roverAxisX = 3;
 		int roverAxisY = 2;
-		Bidimensional roverPosition = new Position(roverAxisX, roverAxisY);
+		Bidimensional roverPosition = mock(Bidimensional.class);
+		when(roverPosition.getAxisX()).thenReturn(roverAxisX);
+		when(roverPosition.getAxisY()).thenReturn(roverAxisY);
 		Rover rover = Rover.land(field, roverPosition, Direction.NORTH);
 		
 		rover.doCommand(Command.MOVE);
@@ -152,10 +160,10 @@ public class RoverTest {
 	
 	@Test 
 	public void testCommandTurnLeftLookingNorth() {
-		Bidimensional fieldArea = new Position(5, 5);
-		Field field = new Field(fieldArea);
+		Field field = mock(Field.class);
+		when(field.checkAvailable(any(Position.class))).thenReturn(true);
 		
-		Bidimensional position = new Position(3, 3);
+		Bidimensional position = mock(Bidimensional.class);
 		Rover rover = Rover.land(field, position, Direction.NORTH);
 		
 		rover.doCommand(Command.TURN_LEFT);
@@ -165,10 +173,10 @@ public class RoverTest {
 	
 	@Test 
 	public void testCommandTurnRightLookingNorth() {
-		Bidimensional fieldArea = new Position(5, 5);
-		Field field = new Field(fieldArea);
+		Field field = mock(Field.class);
+		when(field.checkAvailable(any(Position.class))).thenReturn(true);
 		
-		Bidimensional position = new Position(3, 3);
+		Bidimensional position = mock(Bidimensional.class);
 		Rover rover = Rover.land(field, position, Direction.NORTH);
 		
 		rover.doCommand(Command.TURN_RIGHT);
@@ -178,10 +186,10 @@ public class RoverTest {
 	
 	@Test
 	public void testCommandTurnLeftLookingWest() {
-		Bidimensional fieldArea = new Position(5, 5);
-		Field field = new Field(fieldArea);
+		Field field = mock(Field.class);
+		when(field.checkAvailable(any(Position.class))).thenReturn(true);
 		
-		Bidimensional position = new Position(3, 3);
+		Bidimensional position = mock(Bidimensional.class);
 		Rover rover = Rover.land(field, position, Direction.WEST);
 		
 		rover.doCommand(Command.TURN_LEFT);
@@ -191,10 +199,10 @@ public class RoverTest {
 	
 	@Test
 	public void testCommandTurnRightLookingWest() {
-		Bidimensional fieldArea = new Position(5, 5);
-		Field field = new Field(fieldArea);
+		Field field = mock(Field.class);
+		when(field.checkAvailable(any(Position.class))).thenReturn(true);
 		
-		Bidimensional position = new Position(3, 3);
+		Bidimensional position = mock(Bidimensional.class);
 		Rover rover = Rover.land(field, position, Direction.WEST);
 		
 		rover.doCommand(Command.TURN_RIGHT);
@@ -204,10 +212,10 @@ public class RoverTest {
 	
 	@Test
 	public void testCommandTurnLeftLookingEast() {
-		Bidimensional fieldArea = new Position(5, 5);
-		Field field = new Field(fieldArea);
+		Field field = mock(Field.class);
+		when(field.checkAvailable(any(Position.class))).thenReturn(true);
 		
-		Bidimensional position = new Position(3, 3);
+		Bidimensional position = mock(Bidimensional.class);
 		Rover rover = Rover.land(field, position, Direction.EAST);
 		
 		rover.doCommand(Command.TURN_LEFT);
@@ -217,10 +225,10 @@ public class RoverTest {
 	
 	@Test
 	public void testCommandTurnRightLookingEast() {
-		Bidimensional fieldArea = new Position(5, 5);
-		Field field = new Field(fieldArea);
+		Field field = mock(Field.class);
+		when(field.checkAvailable(any(Position.class))).thenReturn(true);
 		
-		Bidimensional position = new Position(3, 3);
+		Bidimensional position = mock(Bidimensional.class);
 		Rover rover = Rover.land(field, position, Direction.EAST);
 		
 		rover.doCommand(Command.TURN_RIGHT);
@@ -230,10 +238,10 @@ public class RoverTest {
 	
 	@Test
 	public void testCommandTurnLeftLookingSouth() {
-		Bidimensional fieldArea = new Position(5, 5);
-		Field field = new Field(fieldArea);
+		Field field = mock(Field.class);
+		when(field.checkAvailable(any(Position.class))).thenReturn(true);
 		
-		Bidimensional position = new Position(3, 3);
+		Bidimensional position = mock(Bidimensional.class);
 		Rover rover = Rover.land(field, position, Direction.SOUTH);
 		
 		rover.doCommand(Command.TURN_LEFT);
@@ -243,10 +251,10 @@ public class RoverTest {
 	
 	@Test
 	public void testCommandTurnRightLookingSouth() {
-		Bidimensional fieldArea = new Position(5, 5);
-		Field field = new Field(fieldArea);
+		Field field = mock(Field.class);
+		when(field.checkAvailable(any(Position.class))).thenReturn(true);
 		
-		Bidimensional position = new Position(3, 3);
+		Bidimensional position = mock(Bidimensional.class);
 		Rover rover = Rover.land(field, position, Direction.SOUTH);
 		
 		rover.doCommand(Command.TURN_RIGHT);
