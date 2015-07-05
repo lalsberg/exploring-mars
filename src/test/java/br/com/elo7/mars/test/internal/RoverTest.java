@@ -16,8 +16,8 @@ public class RoverTest {
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testCreateRoverOutOfFieldMustThrowException() {
-		Field field = mock(Field.class);
-		when(field.checkAvailable(any(Position.class))).thenReturn(false);
+		Bidimensional fieldArea = new Position(5, 5);
+		Field field = new Field(fieldArea);
 		
 		int roverAxisX = 6;
 		int roverAxisY = 2;
