@@ -10,6 +10,7 @@ import br.com.elo7.mars.model.Position;
 import br.com.elo7.mars.model.Rover;
 import br.com.elo7.mars.parser.Parser;
 import br.com.elo7.mars.validation.InputValidator;
+import br.com.elo7.mars.vo.RoverVO;
 
 public class Run {
 	
@@ -29,7 +30,9 @@ public class Run {
 				userStopped = userStopped(roverInput);
 				
 				if(!userStopped) {
-					Rover rover = parser.parseRover(roverInput, field);
+					RoverVO roverVO = parser.parseRover(roverInput);
+					Rover rover = Rover.land(field, roverVO.getPosition(), 
+							roverVO.getDirection());
 					String commandInput = scanner.nextLine().trim();
 					List<Command> commandList = parser.parseCommandList(commandInput);
 					for (Command command : commandList) {

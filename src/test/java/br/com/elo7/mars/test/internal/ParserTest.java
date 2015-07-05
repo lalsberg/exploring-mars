@@ -10,11 +10,10 @@ import org.junit.Test;
 import br.com.elo7.mars.enumeration.Command;
 import br.com.elo7.mars.enumeration.Direction;
 import br.com.elo7.mars.exception.ParseException;
-import br.com.elo7.mars.model.Field;
 import br.com.elo7.mars.model.Position;
-import br.com.elo7.mars.model.Rover;
 import br.com.elo7.mars.parser.Parser;
 import br.com.elo7.mars.validation.InputValidator;
+import br.com.elo7.mars.vo.RoverVO;
 
 public class ParserTest {
 	
@@ -45,16 +44,12 @@ public class ParserTest {
 	@Test
 	public void testParseRover() throws ParseException {
 		String inputRover = "1 2 N";
-		
-		//TODO mock field e fieldArea
-		Position fieldArea = new Position(5, 5);
-		Field field = new Field(fieldArea);
 				
 		//TODO mock validator
 		InputValidator validator = new InputValidator();
 		Parser parser = new Parser(validator);
 		
-		Rover rover = parser.parseRover(inputRover, field);
+		RoverVO rover = parser.parseRover(inputRover);
 		
 		assertNotNull(rover);
 		assertEquals(1, rover.getPosition().getAxisX());
@@ -66,16 +61,12 @@ public class ParserTest {
 	public void testParseRoverWithInvalidInputShouldThrowExceptionOnValidationFail() 
 			throws ParseException {
 		String inputRover = "1 a N";
-		
-		//TODO mock field e fieldArea
-		Position fieldArea = new Position(5, 5);
-		Field field = new Field(fieldArea);
 				
 		//TODO mock validator
 		InputValidator validator = new InputValidator();
 		Parser parser = new Parser(validator);
 		
-		parser.parseRover(inputRover, field);
+		parser.parseRover(inputRover);
 	}
 	
 	@Test

@@ -6,11 +6,10 @@ import java.util.List;
 import br.com.elo7.mars.enumeration.Command;
 import br.com.elo7.mars.enumeration.Direction;
 import br.com.elo7.mars.exception.ParseException;
-import br.com.elo7.mars.model.Field;
 import br.com.elo7.mars.model.Position;
-import br.com.elo7.mars.model.Rover;
 import br.com.elo7.mars.validation.InputValidator;
 import br.com.elo7.mars.validation.Validation;
+import br.com.elo7.mars.vo.RoverVO;
 
 public class Parser {
 	
@@ -36,7 +35,7 @@ public class Parser {
 		}
 	}
 
-	public Rover parseRover(String inputRover, Field field) throws ParseException {
+	public RoverVO parseRover(String inputRover) throws ParseException {
 		Validation validation = validator.validateRoverInput(inputRover);
 		
 		if(validation.isOk()) {
@@ -46,7 +45,7 @@ public class Parser {
 			
 			Direction direction = Direction.valueOf(directionChar);
 			Position position = new Position(axisX, axisY);
-			Rover rover = Rover.land(field, position, direction);
+			RoverVO rover = new RoverVO(position, direction);
 			return rover;
 		} else {
 			throw new ParseException(validation.getMessage());
