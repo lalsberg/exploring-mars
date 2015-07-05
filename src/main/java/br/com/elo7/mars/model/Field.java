@@ -1,6 +1,7 @@
 package br.com.elo7.mars.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 //TODO Field should have a single instance in app scope
@@ -40,6 +41,10 @@ public class Field {
 	
 	public Position getArea() {
 		return area;
+	}
+
+	public List<Rover> getRovers() {
+		return Collections.unmodifiableList(rovers);
 	}
 
 	@Override
