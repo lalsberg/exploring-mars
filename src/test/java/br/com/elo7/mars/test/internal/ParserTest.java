@@ -19,17 +19,17 @@ import br.com.elo7.mars.validation.InputValidator;
 public class ParserTest {
 	
 	@Test
-	public void testParseField() throws ParseException {
+	public void testParsePosition() throws ParseException {
 		String fieldInput = "5 3";
 		
 		//TODO mock validator
 		InputValidator validator = new InputValidator();
 		Parser parser = new Parser(validator);
-		Field field = parser.parseField(fieldInput);
+		Position position = parser.parsePosition(fieldInput);
 		
-		assertNotNull(field);
-		assertEquals(5, field.getArea().getAxisX());
-		assertEquals(3, field.getArea().getAxisY());
+		assertNotNull(position);
+		assertEquals(5, position.getAxisX());
+		assertEquals(3, position.getAxisY());
 	}
 	
 	@Test(expected = ParseException.class)
@@ -39,7 +39,7 @@ public class ParserTest {
 		//TODO mock validator.. on validate return false
 		InputValidator validator = new InputValidator();
 		Parser parser = new Parser(validator);
-		parser.parseField(fieldInput);
+		parser.parsePosition(fieldInput);
 	}
 	
 	@Test

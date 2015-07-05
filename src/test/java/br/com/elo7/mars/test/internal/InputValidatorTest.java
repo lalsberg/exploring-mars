@@ -16,8 +16,8 @@ public class InputValidatorTest {
 		String input2 = "0 0";
 		
 		InputValidator validator = new InputValidator();
-		Validation validation = validator.validateFieldInput(input);
-		Validation validation2 = validator.validateFieldInput(input2);
+		Validation validation = validator.validatePositionInput(input);
+		Validation validation2 = validator.validatePositionInput(input2);
 		
 		assertTrue(validation.isOk());
 		assertTrue(validation2.isOk());
@@ -32,11 +32,11 @@ public class InputValidatorTest {
 		String inputLarger = "1 1 ";
 		
 		InputValidator validator = new InputValidator();
-		Validation validation = validator.validateFieldInput(inputWithLetter);
-		Validation validation2 = validator.validateFieldInput(inputWithSymbol);
-		Validation validation4 = validator.validateFieldInput(inputWithoutSpace);
-		Validation validation3 = validator.validateFieldInput(inputSmaller);
-		Validation validation5 = validator.validateFieldInput(inputLarger);
+		Validation validation = validator.validatePositionInput(inputWithLetter);
+		Validation validation2 = validator.validatePositionInput(inputWithSymbol);
+		Validation validation4 = validator.validatePositionInput(inputWithoutSpace);
+		Validation validation3 = validator.validatePositionInput(inputSmaller);
+		Validation validation5 = validator.validatePositionInput(inputLarger);
 		
 		assertFalse(validation.isOk());
 		assertFalse(validation2.isOk());

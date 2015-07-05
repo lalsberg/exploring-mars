@@ -8,10 +8,10 @@ package br.com.elo7.mars.validation;
  */
 public class InputValidator {
 	
-	public Validation validateFieldInput(String fieldInput) {
+	public Validation validatePositionInput(String positionInput) {
 		String regex = "\\d\\s\\d";
-		boolean matches = fieldInput.matches(regex);
-		String message = matches ? "" : "Error: unexpected field end possition "
+		boolean matches = positionInput.matches(regex);
+		String message = matches ? "" : "Error: invalid possition "
 				+ "pattern. Example of valid input (remove quotes): \"1 3\"";
 		Validation validation = new Validation(matches, message);
 		return validation;

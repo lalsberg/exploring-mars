@@ -20,18 +20,17 @@ public class Parser {
 		this.validator = validator;
 	}
 
-	public Field parseField(String fieldInput) throws ParseException {
-		Validation validation = validator.validateFieldInput(fieldInput);
+	public Position parsePosition(String positionInput) throws ParseException {
+		Validation validation = validator.validatePositionInput(positionInput);
 		
 		if(validation.isOk()) {
 			int fieldLimitX = Character.getNumericValue(
-					fieldInput.charAt(0));
+					positionInput.charAt(0));
 			int fieldLimitY = Character.getNumericValue(
-					fieldInput.charAt(2));
+					positionInput.charAt(2));
 			
-			Position fieldArea = new Position(fieldLimitX, fieldLimitY);
-			Field field = new Field(fieldArea);
-			return field;
+			Position position = new Position(fieldLimitX, fieldLimitY);
+			return position;
 		} else {
 			throw new ParseException(validation.getMessage());
 		}

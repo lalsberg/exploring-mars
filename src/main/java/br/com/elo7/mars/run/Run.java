@@ -6,6 +6,7 @@ import java.util.Scanner;
 import br.com.elo7.mars.enumeration.Command;
 import br.com.elo7.mars.exception.ParseException;
 import br.com.elo7.mars.model.Field;
+import br.com.elo7.mars.model.Position;
 import br.com.elo7.mars.model.Rover;
 import br.com.elo7.mars.parser.Parser;
 import br.com.elo7.mars.validation.InputValidator;
@@ -14,12 +15,14 @@ public class Run {
 	
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-		String fieldInput = scanner.nextLine().trim();
+		String fieldAreaLimitsInput = scanner.nextLine().trim();
 		InputValidator inputValidator = new InputValidator();
 		
 		try {
 			Parser parser = new Parser(inputValidator);
-			Field field = parser.parseField(fieldInput);
+			Position fieldArea = parser.parsePosition(fieldAreaLimitsInput);
+			Field field = new Field(fieldArea);
+			
 			boolean userStopped = false;
 			do {
 				String roverInput = scanner.nextLine().trim();
