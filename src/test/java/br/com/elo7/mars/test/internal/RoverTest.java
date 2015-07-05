@@ -1,7 +1,7 @@
 package br.com.elo7.mars.test.internal;
 
 import static org.junit.Assert.assertEquals;
-
+import static org.mockito.Mockito.*;
 import org.junit.Test;
 
 import br.com.elo7.mars.enumeration.Command;
@@ -14,9 +14,8 @@ public class RoverTest {
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testCreateRoverOutOfFieldMustThrowException() {
-		//TODO mock fieldArea
-		Position fieldArea = new Position(5, 5);
-		Field field = new Field(fieldArea);
+		Field field = mock(Field.class);
+		when(field.checkAvailable(any(Position.class))).thenReturn(false);
 		
 		int roverAxisX = 6;
 		int roverAxisY = 2;

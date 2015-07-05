@@ -45,10 +45,12 @@ public class ControlPanel {
 	private void printRovers(Field field) {
 		StringBuilder sb = new StringBuilder();
 		for(Rover rover : field.getRovers()) {
-			sb.append(rover.getPosition().getAxisX());
-			sb.append(rover.getPosition().getAxisY());
-			sb.append(rover.getDirection().getInputCommand());
-			sb.append("\n");
+			sb.append(rover.getPosition().getAxisX())
+			.append(" ")
+			.append(rover.getPosition().getAxisY())
+			.append(" ")
+			.append(rover.getDirection().getInputCommand())
+			.append("\n");
 		}
 		System.out.println(sb.toString());
 	}
