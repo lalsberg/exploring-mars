@@ -5,11 +5,11 @@ import static org.mockito.Mockito.*;
 
 import org.junit.Test;
 
-import br.com.elo7.mars.enumeration.Command;
-import br.com.elo7.mars.enumeration.Direction;
 import br.com.elo7.mars.model.Field;
 import br.com.elo7.mars.model.Position;
 import br.com.elo7.mars.model.Rover;
+import br.com.elo7.mars.model.enumeration.Command;
+import br.com.elo7.mars.model.enumeration.Direction;
 import br.com.elo7.mars.model.spec.Bidimensional;
 
 public class RoverTest {

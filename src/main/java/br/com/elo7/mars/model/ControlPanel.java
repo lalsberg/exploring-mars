@@ -1,4 +1,4 @@
-package br.com.elo7.mars.controlpanel;
+package br.com.elo7.mars.model;
 
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -8,10 +8,8 @@ import java.util.Scanner;
 
 import javax.inject.Inject;
 
-import br.com.elo7.mars.enumeration.Command;
 import br.com.elo7.mars.exception.ParseException;
-import br.com.elo7.mars.model.Field;
-import br.com.elo7.mars.model.Rover;
+import br.com.elo7.mars.model.enumeration.Command;
 import br.com.elo7.mars.model.spec.Bidimensional;
 import br.com.elo7.mars.parser.Parser;
 import br.com.elo7.mars.task.ObtainRoversWithCommandsTask;

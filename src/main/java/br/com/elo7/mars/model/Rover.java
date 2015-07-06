@@ -1,7 +1,7 @@
 package br.com.elo7.mars.model;
 
-import br.com.elo7.mars.enumeration.Command;
-import br.com.elo7.mars.enumeration.Direction;
+import br.com.elo7.mars.model.enumeration.Command;
+import br.com.elo7.mars.model.enumeration.Direction;
 import br.com.elo7.mars.model.spec.Bidimensional;
 
 /**

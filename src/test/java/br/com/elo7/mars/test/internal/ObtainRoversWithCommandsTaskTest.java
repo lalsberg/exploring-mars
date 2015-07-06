@@ -14,10 +14,10 @@ import org.junit.Test;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
-import br.com.elo7.mars.enumeration.Command;
-import br.com.elo7.mars.enumeration.Direction;
 import br.com.elo7.mars.exception.ParseException;
 import br.com.elo7.mars.model.Position;
+import br.com.elo7.mars.model.enumeration.Command;
+import br.com.elo7.mars.model.enumeration.Direction;
 import br.com.elo7.mars.parser.Parser;
 import br.com.elo7.mars.task.ObtainRoversWithCommandsTask;
 import br.com.elo7.mars.vo.RoverVO;

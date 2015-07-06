@@ -2,7 +2,7 @@ package br.com.elo7.mars.run;
 
 import java.util.Scanner;
 
-import br.com.elo7.mars.controlpanel.ControlPanel;
+import br.com.elo7.mars.model.ControlPanel;
 import br.com.elo7.mars.util.WeldContext;
 
 /**

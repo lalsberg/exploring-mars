@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 import javax.inject.Inject;
 
-import br.com.elo7.mars.enumeration.Command;
 import br.com.elo7.mars.exception.ParseException;
+import br.com.elo7.mars.model.enumeration.Command;
 import br.com.elo7.mars.parser.Parser;
 import br.com.elo7.mars.vo.RoverVO;
 

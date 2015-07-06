@@ -1,4 +1,4 @@
-package br.com.elo7.mars.enumeration;
+package br.com.elo7.mars.model.enumeration;
 
 import java.util.HashMap;
 import java.util.Map;

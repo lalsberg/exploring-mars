@@ -8,9 +8,9 @@ import java.util.List;
 
 import org.junit.Test;
 
-import br.com.elo7.mars.enumeration.Command;
-import br.com.elo7.mars.enumeration.Direction;
 import br.com.elo7.mars.exception.ParseException;
+import br.com.elo7.mars.model.enumeration.Command;
+import br.com.elo7.mars.model.enumeration.Direction;
 import br.com.elo7.mars.model.spec.Bidimensional;
 import br.com.elo7.mars.parser.Parser;
 import br.com.elo7.mars.validation.InputValidator;
