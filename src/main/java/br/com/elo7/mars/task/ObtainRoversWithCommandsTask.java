@@ -4,6 +4,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.inject.Inject;
+
 import br.com.elo7.mars.enumeration.Command;
 import br.com.elo7.mars.exception.ParseException;
 import br.com.elo7.mars.parser.Parser;
@@ -18,6 +20,7 @@ public class ObtainRoversWithCommandsTask {
 	private final Scanner scanner;
 	private final Parser parser;
 
+	@Inject
 	public ObtainRoversWithCommandsTask(Scanner scanner, Parser parser) {
 		this.scanner = scanner;
 		this.parser = parser;

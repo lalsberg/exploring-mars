@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import javax.inject.Inject;
+
 import br.com.elo7.mars.enumeration.Command;
 import br.com.elo7.mars.exception.ParseException;
 import br.com.elo7.mars.model.Field;
@@ -25,6 +27,7 @@ public class ControlPanel {
 	private final Parser parser;
 	private ObtainRoversWithCommandsTask obtainRoversTask;
 
+	@Inject
 	public ControlPanel(Scanner scanner, Parser parser, 
 			ObtainRoversWithCommandsTask obtainRoversTask) {
 		this.scanner = scanner;
