@@ -3,6 +3,11 @@ package br.com.elo7.mars.enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Every Rover command. This inputCommand value 
+ * refers to the user's input.
+ *
+ */
 public enum Command {
 	MOVE('M'), 
 	TURN_LEFT('L'), 

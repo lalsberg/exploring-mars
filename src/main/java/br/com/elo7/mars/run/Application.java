@@ -7,6 +7,10 @@ import br.com.elo7.mars.parser.Parser;
 import br.com.elo7.mars.task.ObtainRoversWithCommandsTask;
 import br.com.elo7.mars.validation.InputValidator;
 
+/**
+ * Starts the application
+ *
+ */
 public class Application {
 	
 	public static void main(String[] args) {

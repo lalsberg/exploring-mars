@@ -1,7 +1,7 @@
 package br.com.elo7.mars.validation;
 
 /**
- * Validate if Strings are in the expected format.
+ * Validates if Strings are in the expected format.
  * All validation errors must provide an useful 
  * message.
  *

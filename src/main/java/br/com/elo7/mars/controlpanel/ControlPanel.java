@@ -15,6 +15,10 @@ import br.com.elo7.mars.parser.Parser;
 import br.com.elo7.mars.task.ObtainRoversWithCommandsTask;
 import br.com.elo7.mars.vo.RoverVO;
 
+/**
+ * Business logics start here
+ *
+ */
 public class ControlPanel {
 
 	private final Scanner scanner;

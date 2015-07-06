@@ -9,6 +9,10 @@ import br.com.elo7.mars.exception.ParseException;
 import br.com.elo7.mars.parser.Parser;
 import br.com.elo7.mars.vo.RoverVO;
 
+/**
+ * Read Rovers and Commands from user's input.
+ *
+ */
 public class ObtainRoversWithCommandsTask {
 
 	private final Scanner scanner;
@@ -19,9 +23,15 @@ public class ObtainRoversWithCommandsTask {
 		this.parser = parser;
 	}
 
+	/**
+	 * Read Rovers and Commands from user's input.
+	 * A LinkedHashMap is used to keep the insertion 
+	 * order.
+	 * @return 
+	 * @throws ParseException
+	 */
 	public LinkedHashMap<RoverVO, List<Command>> obtainRoversWithCommands() 
 			throws ParseException {
-		//We use a linked hashmap to keep the insertion order
 		LinkedHashMap<RoverVO, List<Command>> roversWithCommands = 
 				new LinkedHashMap<RoverVO, List<Command>>();
 		

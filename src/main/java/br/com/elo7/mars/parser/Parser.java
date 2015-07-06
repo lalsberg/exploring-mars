@@ -12,6 +12,12 @@ import br.com.elo7.mars.validation.InputValidator;
 import br.com.elo7.mars.validation.Validation;
 import br.com.elo7.mars.vo.RoverVO;
 
+/**
+ * Parses from user input to model classes.
+ * Every user input is validated according to 
+ * the expected result before parsing.
+ *
+ */
 public class Parser {
 	
 	private final InputValidator validator;

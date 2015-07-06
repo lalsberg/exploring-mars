@@ -6,7 +6,10 @@ import java.util.List;
 
 import br.com.elo7.mars.model.spec.Bidimensional;
 
-//TODO Field should have a single instance in app scope
+/**
+ * Represents the Field which Rovers land.
+ *
+ */
 public class Field {
 
 	private final Bidimensional area;
@@ -20,6 +23,11 @@ public class Field {
 		rovers.add(rover);
 	}
 	
+	/**
+	 * Check if the given position is inside the 
+	 * Field's area and if it's not occupied by 
+	 * another rover
+	 */
 	public boolean checkAvailable(Bidimensional position) {
 		return isInsideArea(position) && !containsRover(position);
 	}
