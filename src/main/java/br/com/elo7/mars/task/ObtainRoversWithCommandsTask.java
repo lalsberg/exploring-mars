@@ -42,10 +42,8 @@ public class ObtainRoversWithCommandsTask {
 			
 			if(!userStopped) {
 				RoverVO roverVO = parser.parseRover(roverInput);
-				
 				String commandInput = scanner.nextLine();
 				List<Command> commandList = parser.parseCommandList(commandInput);
-				
 				roversWithCommands.put(roverVO, commandList);
 			}
 		

@@ -11,13 +11,15 @@ import java.util.List;
 import java.util.Scanner;
 
 import org.junit.Test;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 
 import br.com.elo7.mars.enumeration.Command;
+import br.com.elo7.mars.enumeration.Direction;
 import br.com.elo7.mars.exception.ParseException;
+import br.com.elo7.mars.model.Position;
 import br.com.elo7.mars.parser.Parser;
 import br.com.elo7.mars.task.ObtainRoversWithCommandsTask;
-import br.com.elo7.mars.validation.InputValidator;
-import br.com.elo7.mars.validation.Validation;
 import br.com.elo7.mars.vo.RoverVO;
 
 public class ObtainRoversWithCommandsTaskTest {
@@ -29,13 +31,13 @@ public class ObtainRoversWithCommandsTaskTest {
 		ByteArrayInputStream in = twoRoversAndStopCommandInputStream();
 		Scanner scanner = new Scanner(in);
 		
-		Validation validation = mock(Validation.class);
-		when(validation.isOk()).thenReturn(true);
-		InputValidator inputValidator = mock(InputValidator.class);
-		when(inputValidator.validateRoverInput(anyString())).thenReturn(validation);
-		when(inputValidator.validateCommandInput(anyString())).thenReturn(validation);
-		
-		Parser parser = new Parser(inputValidator);
+		Parser parser = mock(Parser.class);
+		when(parser.parseRover(anyString()))
+				.thenAnswer(new Answer<RoverVO>() {
+			public RoverVO answer(InvocationOnMock invocation) {
+		        return new RoverVO(new Position(3, 3), Direction.NORTH);
+		     }
+		});
 		
 		ObtainRoversWithCommandsTask task = new 
 				ObtainRoversWithCommandsTask(scanner, parser);
@@ -46,13 +48,14 @@ public class ObtainRoversWithCommandsTaskTest {
 	}
 	
 	private ByteArrayInputStream twoRoversAndStopCommandInputStream() {
-		String fieldLimitsPosition = "1 2 N\r\n"
+		String input = "1 2 N\r\n"
 				+ "LMLMLMLMM\r\n"
 				+ "3 3 E\r\n"
 				+ "MMRMMRMRRM\r\n"
 				+ "s\r\n";
 		ByteArrayInputStream in = new ByteArrayInputStream(
-				fieldLimitsPosition.getBytes());
+				input.getBytes());
 		return in;
 	}
+	
 }
