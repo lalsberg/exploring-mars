@@ -5,7 +5,7 @@ import java.util.Scanner;
 import javax.enterprise.inject.Produces;
 import javax.inject.Singleton;
 
-public class ScannerFactory {
+public class ScannerProducer {
 	
 	@Produces @Singleton
 	public Scanner get() {
