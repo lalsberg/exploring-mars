@@ -28,7 +28,15 @@ public final class Position implements Bidimensional {
 		}
 	}
 	
-	public Bidimensional at(Direction direction) {
+	/**
+	 * Return one position at the given direction. 
+	 * @param direction
+	 * @return
+	 * @throws IllegalArgumentException if the direction 
+	 * is neither NORTH, EAST, SOUTH or WEST. Also if 
+	 * the returned position would have a negative axis.
+	 */
+	public Bidimensional at(Direction direction) throws IllegalArgumentException {
 		Position position;
 		switch (direction) {
 			case NORTH:
