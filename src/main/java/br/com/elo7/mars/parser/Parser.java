@@ -3,6 +3,8 @@ package br.com.elo7.mars.parser;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import br.com.elo7.mars.enumeration.Command;
 import br.com.elo7.mars.enumeration.Direction;
 import br.com.elo7.mars.exception.ParseException;
@@ -22,6 +24,7 @@ public class Parser {
 	
 	private final InputValidator validator;
 
+	@Inject
 	public Parser(InputValidator validator) {
 		this.validator = validator;
 	}
