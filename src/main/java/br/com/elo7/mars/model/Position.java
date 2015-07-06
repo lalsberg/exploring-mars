@@ -44,9 +44,8 @@ public final class Position implements Bidimensional {
 				position = new Position(axisX - 1, axisY);
 				break;
 			default:
-				//TODO THROW illegalarg?
-				position = null;
-				break;
+				throw new IllegalArgumentException("Position can't handle "
+						+ "direction " + direction.name());
 			}
 		return position;
 	}
