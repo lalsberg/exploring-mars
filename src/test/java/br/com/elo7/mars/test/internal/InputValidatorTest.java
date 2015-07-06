@@ -3,19 +3,26 @@ package br.com.elo7.mars.test.internal;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.Test;
+import javax.inject.Inject;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import br.com.elo7.mars.test.setup.WeldJUnit4Runner;
 import br.com.elo7.mars.validation.InputValidator;
 import br.com.elo7.mars.validation.Validation;
 
+@RunWith(WeldJUnit4Runner.class)
 public class InputValidatorTest {
+	
+	 @Inject
+	 InputValidator validator;
 	
 	@Test
 	public void testValidateFieldInputValid() {
 		String input = "1 5";
 		String input2 = "0 0";
 		
-		InputValidator validator = new InputValidator();
 		Validation validation = validator.validatePositionInput(input);
 		Validation validation2 = validator.validatePositionInput(input2);
 		
@@ -31,7 +38,6 @@ public class InputValidatorTest {
 		String inputSmaller = "11";
 		String inputLarger = "1 1 ";
 		
-		InputValidator validator = new InputValidator();
 		Validation validation = validator.validatePositionInput(inputWithLetter);
 		Validation validation2 = validator.validatePositionInput(inputWithSymbol);
 		Validation validation4 = validator.validatePositionInput(inputWithoutSpace);
@@ -52,7 +58,6 @@ public class InputValidatorTest {
 		String input3 = "0 0 W";
 		String input4 = "5 5 S";
 		
-		InputValidator validator = new InputValidator();
 		Validation validation = validator.validateRoverInput(input);
 		Validation validation2 = validator.validateRoverInput(input2);
 		Validation validation3 = validator.validateRoverInput(input3);
@@ -76,7 +81,6 @@ public class InputValidatorTest {
 		String inputSmaller = "1 1 ";
 		String inputLarger = "1 1 1 ";
 		
-		InputValidator validator = new InputValidator();
 		Validation validation = validator.validateRoverInput(inputWithLetterOnAxisX);
 		Validation validation2 = validator.validateRoverInput(inputWithLetterOnAxisY);
 		Validation validation3 = validator.validateRoverInput(inputWithSymbolOnAxisX);
@@ -105,7 +109,6 @@ public class InputValidatorTest {
 		String inputAllCommandsOnce = "LMR";
 		String inputAllCommandsTwice = "LLRMMR";
 		
-		InputValidator validator = new InputValidator();
 		Validation validation = validator.validateCommandInput(inputNoCommand);
 		Validation validation2 = validator.validateCommandInput(inputOneCommand);
 		Validation validation3 = validator.validateCommandInput(inputAllCommandsOnce);
@@ -123,7 +126,6 @@ public class InputValidatorTest {
 		String inputWithSymbol = "&";
 		String inputWithSpaces = "L R";
 		
-		InputValidator validator = new InputValidator();
 		Validation validation = validator.validateCommandInput(inputWithInvalidLetter);
 		Validation validation2 = validator.validateCommandInput(inputWithSymbol);
 		Validation validation3 = validator.validateCommandInput(inputWithSpaces);
