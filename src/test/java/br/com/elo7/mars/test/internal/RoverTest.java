@@ -43,10 +43,16 @@ public class RoverTest {
 		
 		int roverAxisX = 1;
 		int roverAxisY = 2;
+		Direction direction = Direction.NORTH;
 		Bidimensional position = mock(Bidimensional.class);
 		when(position.getAxisX()).thenReturn(roverAxisX);
 		when(position.getAxisY()).thenReturn(roverAxisY);
-		Direction direction = Direction.NORTH;
+		
+		Bidimensional positionAt = mock(Bidimensional.class);
+		when(positionAt.getAxisX()).thenReturn(roverAxisX);
+		when(positionAt.getAxisY()).thenReturn(roverAxisY + 1);
+		when(position.at(direction)).thenReturn(positionAt);
+		
 		Rover rover = Rover.land(field, position, direction);
 		
 		rover.doCommand(Command.MOVE);
@@ -62,10 +68,16 @@ public class RoverTest {
 		
 		int roverAxisX = 1;
 		int roverAxisY = 2;
+		Direction direction = Direction.EAST;
 		Bidimensional position = mock(Bidimensional.class);
 		when(position.getAxisX()).thenReturn(roverAxisX);
 		when(position.getAxisY()).thenReturn(roverAxisY);
-		Direction direction = Direction.EAST;
+		
+		Bidimensional positionAt = mock(Bidimensional.class);
+		when(positionAt.getAxisX()).thenReturn(roverAxisX + 1);
+		when(positionAt.getAxisY()).thenReturn(roverAxisY);
+		when(position.at(direction)).thenReturn(positionAt);
+		
 		Rover rover = Rover.land(field, position, direction);
 		
 		rover.doCommand(Command.MOVE);
@@ -81,10 +93,16 @@ public class RoverTest {
 		
 		int roverAxisX = 1;
 		int roverAxisY = 2;
+		Direction direction = Direction.WEST;
 		Bidimensional position = mock(Bidimensional.class);
 		when(position.getAxisX()).thenReturn(roverAxisX);
 		when(position.getAxisY()).thenReturn(roverAxisY);
-		Direction direction = Direction.WEST;
+		
+		Bidimensional positionAt = mock(Bidimensional.class);
+		when(positionAt.getAxisX()).thenReturn(roverAxisX - 1);
+		when(positionAt.getAxisY()).thenReturn(roverAxisY);
+		when(position.at(direction)).thenReturn(positionAt);
+		
 		Rover rover = Rover.land(field, position, direction);
 		
 		rover.doCommand(Command.MOVE);
@@ -100,10 +118,16 @@ public class RoverTest {
 		
 		int roverAxisX = 1;
 		int roverAxisY = 2;
+		Direction direction = Direction.SOUTH;
 		Bidimensional position = mock(Bidimensional.class);
 		when(position.getAxisX()).thenReturn(roverAxisX);
 		when(position.getAxisY()).thenReturn(roverAxisY);
-		Direction direction = Direction.SOUTH;
+		
+		Bidimensional positionAt = mock(Bidimensional.class);
+		when(positionAt.getAxisX()).thenReturn(roverAxisX);
+		when(positionAt.getAxisY()).thenReturn(roverAxisY - 1);
+		when(position.at(direction)).thenReturn(positionAt);
+		
 		Rover rover = Rover.land(field, position, direction);
 		
 		rover.doCommand(Command.MOVE);
@@ -119,11 +143,16 @@ public class RoverTest {
 		
 		int roverAxisX = 5;
 		int roverAxisY = 5;
+		Direction direction = Direction.NORTH;
 		Bidimensional position = mock(Bidimensional.class);
 		when(position.getAxisX()).thenReturn(roverAxisX);
 		when(position.getAxisY()).thenReturn(roverAxisY);
 		
-		Direction direction = Direction.NORTH;
+		Bidimensional positionAt = mock(Bidimensional.class);
+		when(positionAt.getAxisX()).thenReturn(roverAxisX);
+		when(positionAt.getAxisY()).thenReturn(roverAxisY + 1);
+		when(position.at(direction)).thenReturn(positionAt);
+		
 		Rover rover = Rover.land(field, position, direction);
 		
 		rover.doCommand(Command.MOVE);
@@ -139,16 +168,24 @@ public class RoverTest {
 		
 		int anotherRoverAxisX = 3;
 		int anotherRoverAxisY = 3;
+		Direction direction = Direction.NORTH;
 		Bidimensional anotherRoverPosition = mock(Bidimensional.class);
 		when(anotherRoverPosition.getAxisX()).thenReturn(anotherRoverAxisX);
 		when(anotherRoverPosition.getAxisY()).thenReturn(anotherRoverAxisY);
-		Rover.land(field, anotherRoverPosition, Direction.NORTH);
+		
+		Rover.land(field, anotherRoverPosition, direction);
 		
 		int roverAxisX = 3;
 		int roverAxisY = 2;
 		Bidimensional roverPosition = mock(Bidimensional.class);
 		when(roverPosition.getAxisX()).thenReturn(roverAxisX);
 		when(roverPosition.getAxisY()).thenReturn(roverAxisY);
+		
+		Bidimensional positionAt = mock(Bidimensional.class);
+		when(positionAt.getAxisX()).thenReturn(anotherRoverAxisX);
+		when(positionAt.getAxisY()).thenReturn(anotherRoverAxisY);
+		when(roverPosition.at(direction)).thenReturn(positionAt);
+		
 		Rover rover = Rover.land(field, roverPosition, Direction.NORTH);
 		
 		rover.doCommand(Command.MOVE);

@@ -67,7 +67,7 @@ public class Rover {
 	 */
 	private void move() {
 		try {
-			Bidimensional nextPosition = predictNextPosition();
+			Bidimensional nextPosition = position.at(direction);
 			if(field.checkAvailable(nextPosition)) {
 				this.position = nextPosition;
 			}
@@ -75,33 +75,6 @@ public class Rover {
 		//An IllegalArgumentException here means that the rover 
 		//tried to move outside the field. We do nothing.
 		} catch(IllegalArgumentException e) { }
-	}
-
-	private Bidimensional predictNextPosition() throws IllegalArgumentException {
-		Bidimensional nextPosition;
-		
-		switch(direction) {
-			case NORTH:
-				nextPosition = new Position(position.getAxisX(), 
-					position.getAxisY() + 1);
-				break;
-			case EAST:
-				nextPosition = new Position(position.getAxisX() + 1, 
-						position.getAxisY());
-				break;
-			case SOUTH:
-				nextPosition = new Position(position.getAxisX(), 
-						position.getAxisY() - 1);
-				break;
-			case WEST:
-				nextPosition = new Position(position.getAxisX() - 1, 
-						position.getAxisY());
-				break;
-			default:
-				nextPosition = null;
-				break;
-		}
-		return nextPosition;
 	}
 
 	public Bidimensional getPosition() {

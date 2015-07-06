@@ -1,5 +1,6 @@
 package br.com.elo7.mars.model;
 
+import br.com.elo7.mars.model.enumeration.Direction;
 import br.com.elo7.mars.model.spec.Bidimensional;
 
 /**
@@ -25,6 +26,29 @@ public final class Position implements Bidimensional {
 			throw new IllegalArgumentException("axisX and axisY can "
 					+ "not be less than 0. axisX: " + axisX + axisY + axisY);
 		}
+	}
+	
+	public Bidimensional at(Direction direction) {
+		Position position;
+		switch (direction) {
+			case NORTH:
+				position = new Position(axisX, axisY + 1);
+				break;
+			case EAST:
+				position = new Position(axisX + 1, axisY);
+				break;
+			case SOUTH:
+				position = new Position(axisX, axisY - 1);
+				break;
+			case WEST:
+				position = new Position(axisX - 1, axisY);
+				break;
+			default:
+				//TODO THROW illegalarg?
+				position = null;
+				break;
+			}
+		return position;
 	}
 
 	public int getAxisX() {
