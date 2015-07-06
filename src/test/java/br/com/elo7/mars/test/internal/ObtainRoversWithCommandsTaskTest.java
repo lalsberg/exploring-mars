@@ -1,6 +1,9 @@
 package br.com.elo7.mars.test.internal;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.io.ByteArrayInputStream;
 import java.util.LinkedHashMap;
@@ -14,6 +17,7 @@ import br.com.elo7.mars.exception.ParseException;
 import br.com.elo7.mars.parser.Parser;
 import br.com.elo7.mars.task.ObtainRoversWithCommandsTask;
 import br.com.elo7.mars.validation.InputValidator;
+import br.com.elo7.mars.validation.Validation;
 import br.com.elo7.mars.vo.RoverVO;
 
 public class ObtainRoversWithCommandsTaskTest {
@@ -25,7 +29,12 @@ public class ObtainRoversWithCommandsTaskTest {
 		ByteArrayInputStream in = twoRoversAndStopCommandInputStream();
 		Scanner scanner = new Scanner(in);
 		
-		InputValidator inputValidator = new InputValidator();
+		Validation validation = mock(Validation.class);
+		when(validation.isOk()).thenReturn(true);
+		InputValidator inputValidator = mock(InputValidator.class);
+		when(inputValidator.validateRoverInput(anyString())).thenReturn(validation);
+		when(inputValidator.validateCommandInput(anyString())).thenReturn(validation);
+		
 		Parser parser = new Parser(inputValidator);
 		
 		ObtainRoversWithCommandsTask task = new 
@@ -41,7 +50,7 @@ public class ObtainRoversWithCommandsTaskTest {
 				+ "LMLMLMLMM\r\n"
 				+ "3 3 E\r\n"
 				+ "MMRMMRMRRM\r\n"
-				+ "s";
+				+ "s\r\n";
 		ByteArrayInputStream in = new ByteArrayInputStream(
 				fieldLimitsPosition.getBytes());
 		return in;
