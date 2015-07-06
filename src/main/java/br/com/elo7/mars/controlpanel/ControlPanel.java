@@ -33,7 +33,6 @@ public class ControlPanel {
 		this.scanner = scanner;
 		this.parser = parser;
 		this.obtainRoversTask = obtainRoversTask;
-
 	}
 
 	public void start() {
@@ -46,7 +45,6 @@ public class ControlPanel {
 		} catch (ParseException e) {
 			System.out.println(e.getMessage());
 		}
-		
 	}
 
 	private void printRovers(Field field) {
