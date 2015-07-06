@@ -1,0 +1,5 @@
+<beans>  
+    <alternatives>
+        <class>br.com.elo7.mars.test.internal.ScannerProducerTestAlternative</class>
+    </alternatives>
+</beans>  
