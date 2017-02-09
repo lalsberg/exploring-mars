@@ -25,7 +25,7 @@ repositories {
 
 dependencies {
    compile("org.springframework.boot:spring-boot-starter")
-
+	compile 'org.mockito:mockito-core:2.+'
 //    testCompile('org.springframework.boot:spring-boot-starter-test')
 
 	testCompile('org.junit.platform:junit-platform-runner:1.0.0-M3')

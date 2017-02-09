@@ -1,4 +1,4 @@
-package br.com.gejunit5;
+package br.com.gejunit5.junit5;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
  
