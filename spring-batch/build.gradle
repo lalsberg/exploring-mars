@@ -26,6 +26,7 @@ targetCompatibility = 1.8
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-batch")
-    compile("org.hsqldb:hsqldb")
+//  compile("org.hsqldb:hsqldb")
+	compile('mysql:mysql-connector-java:5.1.37')
     testCompile("junit:junit")
 }
