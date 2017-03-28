@@ -3,3 +3,14 @@
 .classpath
 /target/
 .settings/
+
+*/bin
+*/.project
+*/.classpath
+*/target/
+*/.settings/
+spring-batch/lib
+*/.gradle/
+*/.settings/
+*/build/
+*.log
